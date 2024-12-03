@@ -1,11 +1,20 @@
 import discord
 from discord.ext import commands
+from dotenv import load_dotenv
 import os
+
+
+load_dotenv()  # Load variables from the .env file
+
+TOKEN = os.getenv('DISCORD_BOT_TOKEN')
+if not TOKEN:
+    raise ValueError("No Discord bot token found in .env file.")
 
 # Set the bot's command prefix
 intents = discord.Intents.default()
 intents.message_content = True  # Enable reading message content
 bot = commands.Bot(command_prefix="/", intents=intents)
+
 
 # Folder containing the text files
 TEXT_FILES_DIR = './txt_files'
@@ -39,4 +48,4 @@ async def search(ctx, *, keyword: str):
         await ctx.send("No results found.")
 
 # Run the bot with your token
-bot.run('MTMxMzMxOTg3Mjc0NjIyNTcwNQ.G_iCfQ.M9vocDs8hh8V5l0Vrkkb0ka9GM5nDSfTcCxSZ4')
+bot.run(TOKEN)
