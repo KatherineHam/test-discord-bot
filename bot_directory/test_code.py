@@ -17,7 +17,7 @@ bot = commands.Bot(command_prefix="/", intents=intents)
 
 
 # Folder containing the text files
-TEXT_FILES_DIR = './txt_files'
+TEXT_FILES_DIR = './bot_directory/txt_files'
 
 # Function to search through text files for a keyword
 def search_files(keyword):
